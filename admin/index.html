@@ -1,7 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+  <style>
+    body { font-family: Arial; background:#0f172a; color:white; text-align:center; }
+    .box { background:#1f2937; padding:20px; margin:20px; border-radius:10px; }
+    button { padding:10px 20px; border:none; border-radius:5px; background:#22c55e; color:white; cursor:pointer; }
+    .review { background:#374151; margin:10px; padding:10px; border-radius:8px; }
+  </style>
 </head>
-<body></body>
+<body>
+
+<h1 id="title">Загрузка...</h1>
+
+<div class="box">
+  <p id="text"></p>
+  <button onclick="alert('Кнопка работает')">Нажми меня</button>
+</div>
+
+<h2>Отзывы</h2>
+<div id="reviews"></div>
+
+<script>
+fetch('content.json')
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('title').innerText = d.title;
+    document.getElementById('text').innerText = d.text;
+
+    const reviewsDiv = document.getElementById('reviews');
+    reviewsDiv.innerHTML = "";
+
+    d.reviews.forEach(r => {
+      reviewsDiv.innerHTML += `<div class="review"><b>${r.name}:</b> ${r.text}</div>`;
+    });
+  });
+</script>
+
+</body>
 </html>

@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
-
 collections:
   - name: "site"
     label: "Сайт"
@@ -15,3 +12,9 @@ collections:
         fields:
           - { label: "Заголовок", name: "title", widget: "string" }
           - { label: "Текст", name: "text", widget: "text" }
+          - label: "Отзывы"
+            name: "reviews"
+            widget: "list"
+            fields:
+              - { label: "Имя", name: "name", widget: "string" }
+              - { label: "Текст", name: "text", widget: "text" }ext", widget: "text" }
