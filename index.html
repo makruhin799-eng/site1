@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+  <style>
+    body { font-family: Arial; background:#0f172a; color:white; text-align:center; }
+    .box { background:#1f2937; padding:20px; margin:20px; border-radius:10px; }
+  </style>
+</head>
+<body>
+
+<h1 id="title">Загрузка...</h1>
+<div class="box">
+  <p id="text">...</p>
+</div>
+
+<script>
+fetch('content.json')
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('title').innerText = d.title;
+    document.getElementById('text').innerText = d.text;
+  });
+</script>
+
+</body>
+</html>
